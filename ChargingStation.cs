@@ -1,4 +1,4 @@
-public abstract class ChargingStation
+public abstract class ChargingStation : IReportable
 {
     public string Id { get; }
     public double MaxKw { get; }
@@ -7,6 +7,10 @@ public abstract class ChargingStation
     {
         Id = id;
         MaxKw = maxkw;
+    }
+    public string GetReport()
+    {
+        return $"Station {Id}: {MaxKw} kW";
     }
 
     public abstract decimal CalculatePrice(decimal kwh);
