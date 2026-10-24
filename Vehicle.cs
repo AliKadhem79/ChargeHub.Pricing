@@ -1,4 +1,4 @@
-public class Vehicle
+public class Vehicle : IReportable
 {
     private double _percent;
 
@@ -35,5 +35,9 @@ public class Vehicle
     public double EnergyNeeded()
     {
         return BatteryKwh * (100 - Percent) / 100.0;
+    }
+    public string GetReport()
+    {
+        return $"BIl {Id}: {Percent} %";
     }
 }
