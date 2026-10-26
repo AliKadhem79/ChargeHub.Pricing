@@ -1,16 +1,18 @@
-﻿var vehicle = new Vehicle(1, 75);
-var ac1 = new AcStation("AC-01");
-var dc1 = new DcStation("DC-01");
+﻿string[] inputs = { "20", "12", "abc", "40" };
+decimal total = 0m;
 
-var reportables = new List<IReportable>
+foreach (var text in inputs)
 {
-    vehicle,
-    ac1,
-    dc1
-};
-
-foreach (var item in reportables)
-{
-    Console.WriteLine(item.GetReport());
+    try
+    {
+        total += Reports.ParseKwh(text);
+    }
+    catch (ArgumentException ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+    finally
+    {
+        Console.WriteLine($"Hittills: {total} kWh");
+    }
 }
-
